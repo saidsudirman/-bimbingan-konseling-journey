@@ -1,943 +1,1914 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bimbingan Konseling Journey</title>
-  <!-- Font & Ikon -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(145deg, #f4edfa 0%, #e0d4ee 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .app-container {
-      max-width: 520px;
-      width: 100%;
-      background: rgba(255, 245, 250, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 48px;
-      box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.5);
-      padding: 24px 20px 28px;
-      transition: all 0.2s ease;
-    }
-
-    /* header */
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .header-icon {
-      background: #7a4f9e;
-      color: white;
-      width: 48px;
-      height: 48px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      box-shadow: 0 6px 12px rgba(120, 70, 160, 0.25);
-    }
-
-    .header h1 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #2d1b3d;
-      letter-spacing: -0.3px;
-      line-height: 1.2;
-    }
-
-    .header h1 span {
-      color: #7a4f9e;
-      font-weight: 600;
-    }
-
-    .header h1 .sub-title {
-      display: block;
-      font-size: 13px;
-      font-weight: 400;
-      color: #5a4a6b;
-      letter-spacing: 0.3px;
-    }
-
-    .sub {
-      font-size: 14px;
-      color: #5a4a6b;
-      background: rgba(255, 255, 255, 0.5);
-      padding: 4px 14px;
-      border-radius: 40px;
-      margin-left: auto;
-      font-weight: 600;
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-    }
-
-    /* ilustrasi */
-    .journey-illustration {
-      display: flex;
-      justify-content: center;
-      margin: 4px 0 14px;
-    }
-
-    .journey-illustration svg {
-      width: 100%;
-      max-width: 240px;
-      height: auto;
-      filter: drop-shadow(0 8px 16px rgba(120, 70, 160, 0.12));
-    }
-
-    /* tab navigasi */
-    .tab-nav {
-      display: flex;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 60px;
-      padding: 4px;
-      margin: 6px 0 16px;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 12px 6px;
-      border: none;
-      background: transparent;
-      border-radius: 60px;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      color: #4a3560;
-      cursor: pointer;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .tab-btn i {
-      font-size: 16px;
-    }
-
-    .tab-btn.active {
-      background: white;
-      box-shadow: 0 4px 12px rgba(140, 90, 180, 0.15);
-      color: #2d1b3d;
-    }
-
-    .tab-btn:hover:not(.active) {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.25s ease;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0.5; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== EDUKASI ===== */
-    .edu-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin: 4px 0 8px;
-    }
-
-    .edu-card {
-      background: white;
-      border-radius: 28px;
-      padding: 18px 20px;
-      box-shadow: 0 6px 18px rgba(120, 70, 160, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-      transition: 0.18s;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .edu-card:hover {
-      transform: scale(1.01);
-      box-shadow: 0 10px 24px rgba(140, 90, 180, 0.12);
-      border-color: #d4b5f0;
-    }
-
-    .edu-icon {
-      background: #f0e6fb;
-      width: 48px;
-      height: 48px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: #7a4f9e;
-      flex-shrink: 0;
-    }
-
-    .edu-content {
-      flex: 1;
-    }
-
-    .edu-content h4 {
-      font-size: 16px;
-      color: #2b1a3a;
-      margin-bottom: 4px;
-      font-weight: 700;
-    }
-
-    .edu-content p {
-      font-size: 14px;
-      color: #5f4b73;
-      line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .edu-badge {
-      background: #e2d3f0;
-      color: #4a2d62;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 60px;
-      white-space: nowrap;
-    }
-
-    /* ===== KONSELING / JURNAL ===== */
-    .session-card {
-      background: white;
-      border-radius: 32px;
-      padding: 20px 18px;
-      margin: 0 0 16px;
-      box-shadow: 0 8px 24px rgba(140, 90, 180, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-    }
-
-    .session-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 18px;
-      color: #2b1a3a;
-      margin-bottom: 14px;
-    }
-
-    .session-title i {
-      color: #b48ad9;
-      font-size: 20px;
-      width: 28px;
-    }
-
-    .mood-grid {
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .mood-btn {
-      background: #f4edfa;
-      border: none;
-      border-radius: 60px;
-      padding: 10px 0;
-      flex: 1 0 52px;
-      font-size: 28px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #3b2a4a;
-      font-weight: 600;
-    }
-
-    .mood-btn span {
-      font-size: 11px;
-      margin-top: 2px;
-      opacity: 0.7;
-      font-weight: 600;
-    }
-
-    .mood-btn:hover {
-      transform: scale(1.02);
-      background: #e8daf5;
-    }
-
-    .mood-btn.active {
-      background: #c9a7e8;
-      box-shadow: 0 6px 14px rgba(160, 100, 200, 0.3);
-      color: white;
-      transform: scale(1.02);
-    }
-
-    .mood-btn.active span {
-      color: white;
-      opacity: 1;
-    }
-
-    textarea {
-      width: 100%;
-      border: 1px solid #ede3f7;
-      border-radius: 28px;
-      padding: 16px 18px;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 15px;
-      background: #faf7fe;
-      resize: vertical;
-      min-height: 90px;
-      transition: 0.2s;
-      color: #1f142b;
-      margin: 12px 0 8px;
-    }
-
-    textarea:focus {
-      outline: 2px solid #c9a7e8;
-      background: white;
-      box-shadow: 0 0 0 6px rgba(190, 140, 230, 0.15);
-    }
-
-    .action-row {
-      display: flex;
-      gap: 12px;
-      margin: 6px 0 4px;
-    }
-
-    .btn-primary, .btn-outline, .btn-wa {
-      flex: 1;
-      padding: 14px 8px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 15px;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: 0.15s;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: #b48ad9;
-      color: white;
-      box-shadow: 0 8px 18px rgba(150, 90, 190, 0.2);
-    }
-
-    .btn-primary:hover {
-      background: #a06bc7;
-      transform: scale(0.98);
-      box-shadow: 0 4px 12px rgba(130, 70, 170, 0.3);
-    }
-
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.7);
-      color: #4a3560;
-      border: 1px solid #dcc8ed;
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: white;
-      border-color: #b48ad9;
-    }
-
-    .btn-wa {
-      background: #25D366;
-      color: white;
-      box-shadow: 0 6px 14px rgba(37, 211, 102, 0.25);
-      flex: 1.2;
-    }
-
-    .btn-wa:hover {
-      background: #1da959;
-      transform: scale(0.98);
-    }
-
-    /* journal log */
-    .journal-section {
-      margin-top: 12px;
-      background: rgba(255, 245, 250, 0.5);
-      border-radius: 32px;
-      padding: 8px 6px 6px;
-      backdrop-filter: blur(2px);
-    }
-
-    .journal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 12px 6px 16px;
-      font-weight: 600;
-      color: #2f1d40;
-    }
-
-    .journal-header i {
-      color: #a06bc7;
-      margin-right: 8px;
-    }
-
-    .journal-list {
-      max-height: 140px;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
-
-    .journal-item {
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 60px;
-      padding: 12px 18px;
-      margin: 8px 4px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-    }
-
-    .journal-item .mood-emoji {
-      font-size: 26px;
-      min-width: 40px;
-      text-align: center;
-    }
-
-    .journal-item .entry-text {
-      flex: 1;
-      font-size: 14px;
-      color: #291e34;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .journal-item .entry-time {
-      font-size: 12px;
-      color: #7c6691;
-      background: #efe6f9;
-      padding: 4px 14px;
-      border-radius: 40px;
-      font-weight: 600;
-    }
-
-    .empty-journal {
-      text-align: center;
-      padding: 24px 10px;
-      color: #7a648c;
-      font-weight: 500;
-      font-size: 15px;
-    }
-
-    .empty-journal i {
-      font-size: 32px;
-      opacity: 0.4;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    /* modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(30, 20, 40, 0.5);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      padding: 20px;
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal-box {
-      background: white;
-      max-width: 440px;
-      width: 100%;
-      border-radius: 48px;
-      padding: 32px 28px 28px;
-      box-shadow: 0 40px 70px rgba(0,0,0,0.2);
-      animation: modalPop 0.25s ease;
-      position: relative;
-    }
-
-    @keyframes modalPop {
-      from { opacity: 0; transform: scale(0.94); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: #f0e6fb;
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 30px;
-      font-size: 18px;
-      color: #4a2d62;
-      cursor: pointer;
-      transition: 0.15s;
-    }
-
-    .modal-close:hover {
-      background: #dcc8ed;
-    }
-
-    .modal-box h2 {
-      font-size: 24px;
-      color: #2b1a3a;
-      margin: 8px 0 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .modal-box h2 i {
-      color: #a06bc7;
-    }
-
-    .modal-box p {
-      color: #3e2d50;
-      line-height: 1.7;
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
-
-    .modal-box .tip {
-      background: #f5edfc;
-      border-radius: 24px;
-      padding: 16px 18px;
-      font-size: 15px;
-      color: #2d1a40;
-      border-left: 6px solid #b48ad9;
-    }
-
-    .modal-box .tip i {
-      color: #a06bc7;
-      margin-right: 8px;
-    }
-
-    .journal-list::-webkit-scrollbar { width: 4px; }
-    .journal-list::-webkit-scrollbar-track { background: #e8ddf2; border-radius: 20px; }
-    .journal-list::-webkit-scrollbar-thumb { background: #b48ad9; border-radius: 20px; }
-
-    .footer-note {
-      margin-top: 14px;
-      text-align: center;
-      font-size: 12px;
-      color: #8c78a0;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .ref-link {
-      color: #7a4f9e;
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1px dashed #c9a7e8;
-    }
-
-    .ref-link:hover {
-      color: #4a2d62;
-    }
-
-    @media (max-width: 420px) {
-      .app-container { padding: 16px; }
-      .mood-btn { flex: 1 0 44px; font-size: 24px; }
-      .tab-btn { font-size: 13px; gap: 4px; }
-      .tab-btn i { font-size: 14px; }
-      .btn-wa { flex: 1; }
-      .header h1 { font-size: 18px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bimbingan Konseling Journey - Tes Psikologi</title>
+    <!-- Font & Ikon -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+                publicKey: "YOUR_PUBLIC_KEY_HERE",
+            });
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(145deg, #f4edfa 0%, #e0d4ee 100%);
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .app-container {
+            max-width: 580px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 245, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.6);
+            padding: 20px 18px 24px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .header-icon {
+            background: linear-gradient(135deg, #7a4f9e, #b48ad9);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 6px 16px rgba(120, 70, 160, 0.3);
+            flex-shrink: 0;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d1b3d;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .header h1 span {
+            color: #7a4f9e;
+            font-weight: 700;
+        }
+
+        .header h1 .sub-title {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            color: #7a648c;
+            letter-spacing: 0.2px;
+            margin-top: 1px;
+        }
+
+        .sub {
+            font-size: 12px;
+            color: #6a527d;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 4px 14px;
+            border-radius: 40px;
+            margin-left: auto;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            white-space: nowrap;
+        }
+
+        /* ===== ILUSTRASI ===== */
+        .journey-illustration {
+            display: flex;
+            justify-content: center;
+            margin: 2px 0 12px;
+        }
+
+        .journey-illustration svg {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+        }
+
+        /* ===== TAB NAVIGASI ===== */
+        .tab-nav {
+            display: flex;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 60px;
+            padding: 4px;
+            margin: 4px 0 14px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 8px;
+            border: none;
+            background: transparent;
+            border-radius: 60px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: #5a4a6b;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+            min-width: 70px;
+        }
+
+        .tab-btn i {
+            font-size: 14px;
+        }
+
+        .tab-btn.active {
+            background: white;
+            box-shadow: 0 4px 16px rgba(140, 90, 180, 0.15);
+            color: #2d1b3d;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== TAB CONTENT ===== */
+        .tab-content {
+            display: none;
+            animation: fadeSlideIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== TEST CARD ===== */
+        .test-card {
+            background: white;
+            border-radius: 28px;
+            padding: 18px 16px;
+            margin: 0 0 14px;
+            box-shadow: 0 6px 20px rgba(140, 90, 180, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .test-card:hover {
+            box-shadow: 0 8px 28px rgba(140, 90, 180, 0.10);
+        }
+
+        .test-card .test-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2b1a3a;
+            margin-bottom: 2px;
+        }
+
+        .test-card .test-desc {
+            font-size: 12px;
+            color: #6a527d;
+            margin-bottom: 14px;
+            line-height: 1.5;
+            background: #f8f4fc;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border-left: 4px solid #7a4f9e;
+        }
+
+        .test-card .test-desc i {
+            color: #7a4f9e;
+            margin-right: 4px;
+        }
+
+        .test-card .test-desc .scale-label {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+
+        .test-card .test-desc .scale-label .num {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-weight: 700;
+            font-size: 10px;
+            color: white;
+            margin-right: 2px;
+        }
+
+        .num-1 {
+            background: #28a745;
+        }
+        .num-2 {
+            background: #ffc107;
+        }
+        .num-3 {
+            background: #fd7e14;
+        }
+        .num-4 {
+            background: #dc3545;
+        }
+        .num-5 {
+            background: #6f42c1;
+        }
+
+        /* ===== TABEL MODERN ===== */
+        .modern-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 4px;
+            font-size: 13px;
+        }
+
+        .modern-table thead th {
+            background: #f4edfa;
+            padding: 10px 6px;
+            text-align: center;
+            font-weight: 700;
+            color: #2b1a3a;
+            border-radius: 10px 10px 0 0;
+            font-size: 13px;
+        }
+
+        .modern-table thead th:first-child {
+            text-align: left;
+            padding-left: 16px;
+            border-radius: 10px 0 0 0;
+        }
+
+        .modern-table thead th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        .modern-table thead th .th-num {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #7a4f9e;
+            color: white;
+            line-height: 26px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .modern-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        .modern-table tbody td {
+            padding: 8px 4px;
+            text-align: center;
+            background: #faf8fc;
+            border-bottom: 1px solid #f0e8f8;
+            vertical-align: middle;
+        }
+
+        .modern-table tbody td:first-child {
+            text-align: left;
+            padding-left: 16px;
+            font-weight: 500;
+            color: #2b1a3a;
+            border-radius: 10px 0 0 10px;
+            background: #faf8fc;
+            font-size: 13px;
+        }
+
+        .modern-table tbody td:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .modern-table tbody tr:hover td {
+            background: #f4edfa;
+        }
+
+        .modern-table tbody tr:hover td:first-child {
+            background: #f4edfa;
+        }
+
+        .modern-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== RADIO BUTTON CUSTOM ===== */
+        .radio-option {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+            padding: 2px 0;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            cursor: pointer;
+        }
+
+        .radio-option .radio-custom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2.5px solid #dcc8ed;
+            background: white;
+            transition: all 0.25s ease;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .radio-option .radio-custom::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #7a4f9e;
+            transform: scale(0);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .radio-option input[type="radio"]:checked+.radio-custom {
+            border-color: #7a4f9e;
+            background: #f0e6fb;
+            box-shadow: 0 0 0 4px rgba(122, 79, 158, 0.12);
+        }
+
+        .radio-option input[type="radio"]:checked+.radio-custom::after {
+            transform: scale(1);
+        }
+
+        .radio-option input[type="radio"]:focus+.radio-custom {
+            box-shadow: 0 0 0 4px rgba(122, 79, 158, 0.2);
+        }
+
+        .radio-option:hover .radio-custom {
+            border-color: #7a4f9e;
+            transform: scale(1.05);
+        }
+
+        .radio-option input[type="radio"]:checked+.radio-custom {
+            transform: scale(1);
+        }
+
+        /* ===== LEGEND SKALA ===== */
+        .scale-legend {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 12px 4px 4px;
+            border-top: 1px solid #f0e6fb;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #5a4a6b;
+            justify-content: center;
+        }
+
+        .scale-legend span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #f8f4fc;
+            padding: 4px 12px 4px 6px;
+            border-radius: 30px;
+        }
+
+        .scale-legend .dot {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+
+        .dot-1 {
+            background: #28a745;
+        }
+        .dot-2 {
+            background: #ffc107;
+        }
+        .dot-3 {
+            background: #fd7e14;
+        }
+        .dot-4 {
+            background: #dc3545;
+        }
+        .dot-5 {
+            background: #6f42c1;
+        }
+
+        /* ===== IDENTITY FORM ===== */
+        .identity-form {
+            background: #faf7fe;
+            border-radius: 20px;
+            padding: 16px 14px;
+            margin-bottom: 14px;
+            border: 1px solid #ede3f7;
+        }
+
+        .identity-form .form-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .identity-form .form-group {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .identity-form .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 12px;
+            color: #2b1a3a;
+            margin-bottom: 3px;
+        }
+
+        .identity-form .form-group label .required {
+            color: #e74c3c;
+            margin-left: 1px;
+        }
+
+        .identity-form .form-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ede3f7;
+            border-radius: 14px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 14px;
+            background: white;
+            transition: all 0.25s ease;
+            color: #1f142b;
+        }
+
+        .identity-form .form-group input:focus {
+            outline: none;
+            border-color: #b48ad9;
+            box-shadow: 0 0 0 4px rgba(180, 138, 217, 0.15);
+        }
+
+        .identity-form .form-group input::placeholder {
+            color: #a994b5;
+            font-size: 13px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin: 4px 0 2px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-outline,
+        .btn-success,
+        .btn-wa {
+            flex: 1;
+            padding: 13px 10px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+            min-width: 100px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b48ad9, #7a4f9e);
+            color: white;
+            box-shadow: 0 6px 20px rgba(150, 90, 190, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(150, 90, 190, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.7);
+            color: #4a3560;
+            border: 1.5px solid #dcc8ed;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            border-color: #b48ad9;
+            transform: translateY(-2px);
+        }
+
+        .btn-wa {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.35);
+        }
+
+        /* ===== RESULT BOX ===== */
+        .result-box {
+            background: #f4edfa;
+            border-radius: 20px;
+            padding: 16px;
+            margin-top: 12px;
+            display: none;
+            border: 1px solid #e0d4ee;
+        }
+
+        .result-box.show {
+            display: block;
+            animation: fadeSlideIn 0.3s ease;
+        }
+
+        .result-box .result-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #2b1a3a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .result-box .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #e0d4ee;
+            font-size: 13px;
+        }
+
+        .result-box .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-box .result-item .label {
+            color: #5a4a6b;
+        }
+
+        .result-box .result-item .value {
+            font-weight: 700;
+            color: #2b1a3a;
+        }
+
+        /* ===== EDUKASI ===== */
+        .edu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 2px 0 6px;
+        }
+
+        .edu-card {
+            background: white;
+            border-radius: 24px;
+            padding: 16px 18px;
+            box-shadow: 0 4px 16px rgba(120, 70, 160, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(140, 90, 180, 0.12);
+            border-color: #d4b5f0;
+        }
+
+        .edu-icon {
+            background: #f0e6fb;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #7a4f9e;
+            flex-shrink: 0;
+        }
+
+        .edu-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .edu-content h4 {
+            font-size: 15px;
+            color: #2b1a3a;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .edu-content p {
+            font-size: 13px;
+            color: #6a527d;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .edu-badge {
+            background: #e2d3f0;
+            color: #4a2d62;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 60px;
+            white-space: nowrap;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 20, 40, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+            max-width: 440px;
+            width: 100%;
+            border-radius: 40px;
+            padding: 30px 24px 24px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+            animation: modalPop 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.92) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: #f0e6fb;
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            font-size: 16px;
+            color: #4a2d62;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: #dcc8ed;
+            transform: rotate(90deg);
+        }
+
+        .modal-box h2 {
+            font-size: 22px;
+            color: #2b1a3a;
+            margin: 4px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-box h2 i {
+            color: #a06bc7;
+        }
+
+        .modal-box p {
+            color: #3e2d50;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .modal-box .tip {
+            background: #f5edfc;
+            border-radius: 20px;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #2d1a40;
+            border-left: 5px solid #b48ad9;
+        }
+
+        .modal-box .tip i {
+            color: #a06bc7;
+            margin-right: 6px;
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #2d1b3d;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.success {
+            background: #28a745;
+        }
+
+        .toast.error {
+            background: #dc3545;
+        }
+
+        .toast.info {
+            background: #7a4f9e;
+        }
+
+        /* ===== SPINNER ===== */
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.7s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-note {
+            margin-top: 14px;
+            text-align: center;
+            font-size: 12px;
+            color: #8c78a0;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .ref-link {
+            color: #7a4f9e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed #c9a7e8;
+            transition: color 0.2s ease;
+        }
+
+        .ref-link:hover {
+            color: #4a2d62;
+            border-bottom-color: #7a4f9e;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .test-card {
+                padding: 14px 12px;
+                border-radius: 22px;
+            }
+
+            .test-card .test-title {
+                font-size: 15px;
+            }
+
+            .test-card .test-desc {
+                font-size: 11px;
+                padding: 8px 12px;
+            }
+
+            .test-card .test-desc .scale-label {
+                font-size: 11px;
+                margin-right: 6px;
+            }
+
+            .test-card .test-desc .scale-label .num {
+                width: 18px;
+                height: 18px;
+                line-height: 18px;
+                font-size: 9px;
+            }
+
+            .modern-table {
+                font-size: 12px;
+                border-spacing: 0 3px;
+            }
+
+            .modern-table thead th {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+
+            .modern-table thead th:first-child {
+                padding-left: 10px;
+            }
+
+            .modern-table thead th .th-num {
+                width: 22px;
+                height: 22px;
+                line-height: 22px;
+                font-size: 11px;
+            }
+
+            .modern-table tbody td {
+                padding: 6px 3px;
+                font-size: 12px;
+            }
+
+            .modern-table tbody td:first-child {
+                padding-left: 10px;
+                font-size: 12px;
+            }
+
+            .radio-option .radio-custom {
+                width: 26px;
+                height: 26px;
+            }
+
+            .radio-option .radio-custom::after {
+                width: 10px;
+                height: 10px;
+            }
+
+            .scale-legend {
+                font-size: 11px;
+                gap: 6px;
+            }
+
+            .scale-legend span {
+                padding: 3px 8px 3px 4px;
+            }
+
+            .scale-legend .dot {
+                width: 12px;
+                height: 12px;
+            }
+
+            .identity-form {
+                padding: 12px 10px;
+            }
+
+            .identity-form .form-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .identity-form .form-group {
+                min-width: auto;
+            }
+
+            .action-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .btn-primary,
+            .btn-outline,
+            .btn-wa {
+                width: 100%;
+                padding: 12px 8px;
+                font-size: 13px;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .modern-table {
+                font-size: 10px;
+            }
+
+            .modern-table thead th {
+                padding: 6px 2px;
+                font-size: 10px;
+            }
+
+            .modern-table thead th .th-num {
+                width: 18px;
+                height: 18px;
+                line-height: 18px;
+                font-size: 9px;
+            }
+
+            .modern-table tbody td {
+                padding: 4px 2px;
+                font-size: 10px;
+            }
+
+            .modern-table tbody td:first-child {
+                padding-left: 6px;
+                font-size: 10px;
+            }
+
+            .radio-option .radio-custom {
+                width: 22px;
+                height: 22px;
+                border-width: 2px;
+            }
+
+            .radio-option .radio-custom::after {
+                width: 8px;
+                height: 8px;
+            }
+
+            .scale-legend {
+                font-size: 9px;
+                gap: 4px;
+            }
+
+            .scale-legend span {
+                padding: 2px 6px 2px 3px;
+            }
+
+            .scale-legend .dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="app-container">
-    <!-- header -->
-    <div class="header">
-      <div class="header-icon"><i class="fas fa-seedling"></i></div>
-      <h1>
-        Bimbingan Konseling <span>Journey</span>
-        <span class="sub-title"><i class="fas fa-heart" style="color: #7a4f9e; margin-right: 4px;"></i> edukasi & konseling</span>
-      </h1>
-      <div class="sub"><i class="fas fa-calendar-day"></i> hari ini</div>
-    </div>
-
-    <!-- ilustrasi -->
-    <div class="journey-illustration">
-      <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="30" cy="30" r="18" fill="#c9a7e8" opacity="0.3" />
-        <circle cx="170" cy="30" r="18" fill="#b48ad9" opacity="0.15" />
-        <path d="M40 30 L70 20 L100 40 L130 18 L160 35" stroke="#b48ad9" stroke-width="4" stroke-linecap="round" stroke-dasharray="6 6" />
-        <circle cx="40" cy="30" r="6" fill="#b48ad9" />
-        <circle cx="100" cy="40" r="6" fill="#a06bc7" />
-        <circle cx="160" cy="35" r="6" fill="#b48ad9" />
-        <circle cx="70" cy="20" r="4" fill="#d4b5f0" />
-        <circle cx="130" cy="18" r="4" fill="#d4b5f0" />
-        <path d="M84 44 L92 48 L100 44" stroke="#a06bc7" stroke-width="2" />
-      </svg>
-    </div>
-
-    <!-- tab navigasi -->
-    <div class="tab-nav">
-      <button class="tab-btn active" data-tab="edu"><i class="fas fa-book-open"></i> Edukasi</button>
-      <button class="tab-btn" data-tab="konseling"><i class="fas fa-comment-dots"></i> Konseling</button>
-    </div>
-
-    <!-- TAB EDUKASI -->
-    <div id="tabEdu" class="tab-content active">
-      <div style="margin: 4px 0 10px;">
-        <p style="color: #3e2d50; font-weight: 500; padding: 0 8px; font-size: 15px;">
-          <i class="fas fa-lightbulb" style="color: #b48ad9; margin-right: 8px;"></i>
-          Klik materi untuk membaca, lalu hubungi konselor
-        </p>
-      </div>
-      <div class="edu-grid" id="eduGrid">
-        <!-- di-render via JS -->
-      </div>
-    </div>
-
-    <!-- TAB KONSELING (jurnal + WA) -->
-    <div id="tabKonseling" class="tab-content">
-      <div class="session-card">
-        <div class="session-title"><i class="fas fa-smile"></i> Bagaimana perasaanmu?</div>
-        <div class="mood-grid" id="moodGrid">
-          <button class="mood-btn" data-mood="senang" data-emoji="😊"><span>senang</span></button>
-          <button class="mood-btn" data-mood="tenang" data-emoji="😌"><span>tenang</span></button>
-          <button class="mood-btn" data-mood="sedih" data-emoji="😔"><span>sedih</span></button>
-          <button class="mood-btn" data-mood="cemas" data-emoji="😰"><span>cemas</span></button>
-          <button class="mood-btn" data-mood="marah" data-emoji="😤"><span>marah</span></button>
+    <div class="app-container">
+        <!-- header -->
+        <div class="header">
+            <div class="header-icon"><i class="fas fa-seedling"></i></div>
+            <h1>
+                Bimbingan Konseling <span>Journey</span>
+                <span class="sub-title"><i class="fas fa-heart" style="color: #7a4f9e; margin-right: 4px;"></i> tes
+                    psikologi & konseling</span>
+            </h1>
+            <div class="sub"><i class="fas fa-calendar-day"></i> hari ini</div>
         </div>
-        <textarea id="reflectionInput" placeholder="Tulis cerita atau keluhanmu..."></textarea>
-        <div class="action-row">
-          <button class="btn-primary" id="saveEntryBtn"><i class="fas fa-pen-fancy"></i> Simpan</button>
-          <button class="btn-outline" id="clearBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+
+        <!-- ilustrasi -->
+        <div class="journey-illustration">
+            <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="30" r="18" fill="#c9a7e8" opacity="0.3" />
+                <circle cx="170" cy="30" r="18" fill="#b48ad9" opacity="0.15" />
+                <path d="M40 30 L70 20 L100 40 L130 18 L160 35" stroke="#b48ad9" stroke-width="4" stroke-linecap="round"
+                    stroke-dasharray="6 6" />
+                <circle cx="40" cy="30" r="6" fill="#b48ad9" />
+                <circle cx="100" cy="40" r="6" fill="#a06bc7" />
+                <circle cx="160" cy="35" r="6" fill="#b48ad9" />
+                <circle cx="70" cy="20" r="4" fill="#d4b5f0" />
+                <circle cx="130" cy="18" r="4" fill="#d4b5f0" />
+                <path d="M84 44 L92 48 L100 44" stroke="#a06bc7" stroke-width="2" />
+            </svg>
         </div>
-        <!-- tombol WA -->
-        <div style="margin-top: 14px;">
-          <a href="https://wa.me/6281350275634?text=Halo%20kak%2C%20saya%20ingin%20konsultasi%20tentang..." target="_blank" class="btn-wa" style="display: flex; width: 100%;">
-            <i class="fab fa-whatsapp"></i> Hubungi Konselor
-          </a>
-          <p style="font-size: 12px; color: #7c6691; margin-top: 6px; text-align: center;">
-            <i class="fas fa-shield-alt"></i> Konseling rahasia & aman
-          </p>
+
+        <!-- tab navigasi -->
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="edu"><i class="fas fa-book-open"></i> Edukasi</button>
+            <button class="tab-btn" data-tab="tes"><i class="fas fa-clipboard-list"></i> Tes</button>
+            <button class="tab-btn" data-tab="konseling"><i class="fas fa-comment-dots"></i> Konseling</button>
         </div>
-      </div>
 
-      <div class="journal-section">
-        <div class="journal-header">
-          <span><i class="fas fa-journal-whills"></i> Catatan konseling</span>
-          <span style="font-size: 13px; background: rgba(180,138,217,0.15); padding: 4px 14px; border-radius: 40px;" id="entryCount">0</span>
-        </div>
-        <div class="journal-list" id="journalList">
-          <div class="empty-journal"><i class="fas fa-feather-alt"></i>Belum ada catatan</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-note">
-      <i class="fas fa-circle" style="font-size: 6px; color: #7a4f9e;"></i>
-      #BKJourney • belajar & tumbuh bersama
-      <i class="fas fa-circle" style="font-size: 6px; color: #7a4f9e;"></i>
-    </div>
-  </div>
-
-  <!-- MODAL EDUKASI -->
-  <div class="modal-overlay" id="eduModal">
-    <div class="modal-box">
-      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
-      <h2 id="modalTitle"><i class="fas fa-book-open"></i> Judul</h2>
-      <div id="modalBody">
-        <p>Konten edukasi akan muncul di sini.</p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    (function() {
-      "use strict";
-
-      // ---------- DATA EDUKASI (materi) ----------
-      const eduData = [
-        {
-          id: 1,
-          icon: '🧠',
-          title: 'Mengenal Stres & Kecemasan',
-          summary: 'Stres adalah respons tubuh terhadap tekanan. Pelajari cara mengenali dan mengelolanya.',
-          detail: 'Stres dan kecemasan adalah bagian dari kehidupan, namun jika berlebihan bisa mengganggu. Kenali tanda-tandanya: sulit tidur, jantung berdebar, atau pikiran yang berputar. Teknik sederhana: tarik napas dalam 4 detik, tahan 4 detik, hembuskan 4 detik. Lakukan 5 menit setiap pagi. Jika perlu, bicarakan dengan konselor.'
-        },
-        {
-          id: 2,
-          icon: '💬',
-          title: 'Komunikasi Efektif dengan Teman & Keluarga',
-          summary: 'Belajar mendengarkan dan menyampaikan perasaan dengan jelas adalah kunci hubungan sehat.',
-          detail: 'Komunikasi yang baik dimulai dari mendengarkan tanpa menghakimi. Gunakan pernyataan "saya" untuk mengungkapkan perasaan, misalnya "Saya merasa sedih ketika..." Hindari menyalahkan dan berikan ruang bagi orang lain untuk berbicara. Latih empati setiap hari.'
-        },
-        {
-          id: 3,
-          icon: '🌿',
-          title: 'Self-Compassion: Bersikap Baik pada Diri',
-          summary: 'Perlakukan dirimu seperti kamu memperlakukan teman baik. Ini adalah pondasi kesehatan mental.',
-          detail: 'Self-compassion berarti menerima diri sendiri dengan segala kekurangan. Ketika gagal, jangan menghakimi diri secara berlebihan. Ucapkan kalimat penyemangat, "Saya melakukan yang terbaik". Penelitian menunjukkan bahwa self-compassion mengurangi stres dan meningkatkan resiliensi.'
-        },
-        {
-          id: 4,
-          icon: '🧘',
-          title: 'Mindfulness untuk Pemula',
-          summary: 'Mindfulness membantu kita hadir di saat ini. Praktik sederhana untuk menenangkan pikiran.',
-          detail: 'Mindfulness adalah kesadaran penuh pada momen sekarang. Mulailah dengan pernapasan: tarik napas dalam 4 detik, tahan 4 detik, hembuskan 4 detik. Lakukan 5 menit setiap hari. Sadari sensasi tubuh dan biarkan pikiran berlalu tanpa menghakimi. Ini menurunkan kecemasan.'
-        },
-        {
-          id: 5,
-          icon: '🛡️',
-          title: 'Membangun Batasan Sehat',
-          summary: 'Batasan adalah cara melindungi energi dan kesejahteraan emosional. Belajar mengatakan "tidak".',
-          detail: 'Batasan sehat membantu menjaga hubungan yang seimbang. Kenali apa yang membuatmu tidak nyaman dan sampaikan dengan tegas namun sopan. Contoh: "Saya tidak bisa melakukan itu sekarang". Menjaga batasan bukan berarti egois, tetapi bentuk perawatan diri.'
-        }
-      ];
-
-      // ---------- DOM REFS ----------
-      const moodBtns = document.querySelectorAll('.mood-btn');
-      const reflectionInput = document.getElementById('reflectionInput');
-      const saveBtn = document.getElementById('saveEntryBtn');
-      const clearBtn = document.getElementById('clearBtn');
-      const journalList = document.getElementById('journalList');
-      const entryCount = document.getElementById('entryCount');
-      const eduGrid = document.getElementById('eduGrid');
-      const modalOverlay = document.getElementById('eduModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalBody = document.getElementById('modalBody');
-      const modalClose = document.getElementById('modalClose');
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabEdu = document.getElementById('tabEdu');
-      const tabKonseling = document.getElementById('tabKonseling');
-
-      // ---------- STATE JURNAL ----------
-      let selectedMood = null;
-      let selectedEmoji = '😊';
-      let journalEntries = [];
-
-      // ---------- STORAGE ----------
-      function loadFromStorage() {
-        const stored = localStorage.getItem('bkJourneyData');
-        if (stored) {
-          try { journalEntries = JSON.parse(stored); } catch(e) { journalEntries = []; }
-        } else {
-          journalEntries = [
-            { mood: 'tenang', emoji: '😌', text: 'Hari ini saya merasa cukup baik.', timestamp: Date.now() - 3600000 },
-            { mood: 'sedih', emoji: '😔', text: 'Sedikit cemas dengan ujian, tapi saya siap.', timestamp: Date.now() - 7200000 }
-          ];
-        }
-        journalEntries.sort((a, b) => b.timestamp - a.timestamp);
-        renderJournal();
-        updateCount();
-      }
-
-      function saveToStorage() {
-        localStorage.setItem('bkJourneyData', JSON.stringify(journalEntries));
-      }
-
-      function renderJournal() {
-        if (!journalList) return;
-        if (journalEntries.length === 0) {
-          journalList.innerHTML = `<div class="empty-journal"><i class="fas fa-feather-alt"></i>Belum ada catatan</div>`;
-          return;
-        }
-        let html = '';
-        const items = journalEntries.slice(0, 10);
-        for (let entry of items) {
-          const timeStr = formatTime(entry.timestamp);
-          const moodEmoji = entry.emoji || '😊';
-          const text = entry.text ? entry.text : '(tanpa catatan)';
-          html += `<div class="journal-item">
-            <span class="mood-emoji">${moodEmoji}</span>
-            <span class="entry-text">${escapeHtml(text)}</span>
-            <span class="entry-time">${timeStr}</span>
-          </div>`;
-        }
-        journalList.innerHTML = html;
-      }
-
-      function formatTime(ts) {
-        const date = new Date(ts);
-        return `${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
-      }
-
-      function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-      }
-
-      function updateCount() {
-        if (entryCount) entryCount.textContent = `${journalEntries.length} catatan`;
-      }
-
-      function clearMoodActive() {
-        moodBtns.forEach(btn => btn.classList.remove('active'));
-      }
-
-      function selectMood(btn) {
-        clearMoodActive();
-        btn.classList.add('active');
-        selectedMood = btn.dataset.mood;
-        selectedEmoji = btn.dataset.emoji;
-      }
-
-      // ---------- JURNAL EVENT ----------
-      moodBtns.forEach(btn => {
-        btn.addEventListener('click', function() { selectMood(this); });
-      });
-
-      function saveEntry() {
-        const text = reflectionInput.value.trim();
-        if (!selectedMood && text.length === 0) {
-          alert('Pilih perasaan atau tulis catatan terlebih dahulu ✦');
-          return;
-        }
-        const mood = selectedMood || 'tenang';
-        const emoji = selectedEmoji || '😌';
-        const newEntry = {
-          mood, emoji,
-          text: text || '(tanpa catatan)',
-          timestamp: Date.now()
-        };
-        journalEntries.unshift(newEntry);
-        if (journalEntries.length > 30) journalEntries.pop();
-        saveToStorage();
-        renderJournal();
-        updateCount();
-        reflectionInput.value = '';
-        // biarkan mood tetap agar cepat
-      }
-
-      function resetAll() {
-        if (journalEntries.length === 0 && reflectionInput.value.trim() === '') return;
-        if (confirm('Reset semua catatan? Data akan hilang.')) {
-          journalEntries = [];
-          saveToStorage();
-          renderJournal();
-          updateCount();
-          reflectionInput.value = '';
-          clearMoodActive();
-          selectedMood = null;
-          selectedEmoji = '😊';
-        }
-      }
-
-      saveBtn.addEventListener('click', saveEntry);
-      clearBtn.addEventListener('click', resetAll);
-      reflectionInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-          e.preventDefault();
-          saveEntry();
-        }
-      });
-
-      // ---------- EDUKASI RENDER ----------
-      function renderEdu() {
-        if (!eduGrid) return;
-        let html = '';
-        eduData.forEach(item => {
-          html += `
-            <div class="edu-card" data-id="${item.id}">
-              <div class="edu-icon">${item.icon}</div>
-              <div class="edu-content">
-                <h4>${item.title}</h4>
-                <p>${item.summary}</p>
-              </div>
-              <span class="edu-badge"><i class="fas fa-chevron-right"></i></span>
+        <!-- TAB EDUKASI -->
+        <div id="tabEdu" class="tab-content active">
+            <div style="margin: 4px 0 10px;">
+                <p style="color: #3e2d50; font-weight: 500; padding: 0 8px; font-size: 15px;">
+                    <i class="fas fa-lightbulb" style="color: #b48ad9; margin-right: 8px;"></i>
+                    Klik materi untuk membaca, lalu ikuti tes psikologi
+                </p>
             </div>
-          `;
-        });
-        eduGrid.innerHTML = html;
-        document.querySelectorAll('.edu-card').forEach(card => {
-          card.addEventListener('click', function() {
-            const id = parseInt(this.dataset.id);
-            const data = eduData.find(d => d.id === id);
-            if (data) openModal(data);
-          });
-        });
-      }
+            <div class="edu-grid" id="eduGrid"></div>
+        </div>
 
-      // ---------- MODAL ----------
-      function openModal(data) {
-        modalTitle.innerHTML = `<i class="fas fa-book-open"></i> ${data.title}`;
-        modalBody.innerHTML = `
-          <p>${data.detail}</p>
-          <div class="tip"><i class="fas fa-heart"></i> ${data.summary}</div>
-        `;
-        modalOverlay.classList.add('open');
-      }
+        <!-- TAB TES -->
+        <div id="tabTes" class="tab-content">
+            <!-- Form identitas -->
+            <div class="identity-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nama Lengkap <span style="color:#e74c3c;">*</span></label>
+                        <input type="text" id="tesNama" placeholder="Masukkan nama">
+                    </div>
+                    <div class="form-group">
+                        <label>Kelas <span style="color:#e74c3c;">*</span></label>
+                        <input type="text" id="tesKelas" placeholder="Contoh: XII IPA 1">
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor Absen <span style="color:#e74c3c;">*</span></label>
+                        <input type="number" id="tesAbsen" placeholder="No. absen">
+                    </div>
+                </div>
+            </div>
 
-      function closeModal() {
-        modalOverlay.classList.remove('open');
-      }
+            <!-- Tes 1: Stres & Kecemasan -->
+            <div class="test-card" id="test1">
+                <div class="test-title">🧠 Tes 1: Mengenal Stres & Kecemasan</div>
+                <div class="test-desc">
+                    <i class="fas fa-info-circle"></i> Pilih skala yang paling sesuai dengan kondisi Anda:
+                    <div style="margin-top: 6px; display: flex; flex-wrap: wrap; gap: 2px;">
+                        <span class="scale-label"><span class="num num-1">1</span> Tidak Pernah</span>
+                        <span class="scale-label"><span class="num num-2">2</span> Jarang</span>
+                        <span class="scale-label"><span class="num num-3">3</span> Kadang-kadang</span>
+                        <span class="scale-label"><span class="num num-4">4</span> Sering</span>
+                        <span class="scale-label"><span class="num num-5">5</span> Sangat Sering</span>
+                    </div>
+                </div>
+                <table class="modern-table" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Pernyataan</th>
+                            <th><span class="th-num">1</span></th>
+                            <th><span class="th-num">2</span></th>
+                            <th><span class="th-num">3</span></th>
+                            <th><span class="th-num">4</span></th>
+                            <th><span class="th-num">5</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Saya merasa sulit untuk rileks.</td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya sering merasa khawatir berlebihan.</td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya sulit tidur karena banyak pikiran.</td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya mudah merasa tersinggung.</td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya merasa kewalahan dengan tugas sehari-hari.</td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="scale-legend">
+                    <span><span class="dot dot-1"></span> 1 = Tidak Pernah</span>
+                    <span><span class="dot dot-2"></span> 2 = Jarang</span>
+                    <span><span class="dot dot-3"></span> 3 = Kadang-kadang</span>
+                    <span><span class="dot dot-4"></span> 4 = Sering</span>
+                    <span><span class="dot dot-5"></span> 5 = Sangat Sering</span>
+                </div>
+            </div>
 
-      modalClose.addEventListener('click', closeModal);
-      modalOverlay.addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-      });
+            <!-- Tes 2: Komunikasi Efektif -->
+            <div class="test-card" id="test2">
+                <div class="test-title">💬 Tes 2: Komunikasi Efektif</div>
+                <div class="test-desc">
+                    <i class="fas fa-info-circle"></i> Pilih skala yang paling sesuai dengan kebiasaan Anda:
+                    <div style="margin-top: 6px; display: flex; flex-wrap: wrap; gap: 2px;">
+                        <span class="scale-label"><span class="num num-1">1</span> Tidak Pernah</span>
+                        <span class="scale-label"><span class="num num-2">2</span> Jarang</span>
+                        <span class="scale-label"><span class="num num-3">3</span> Kadang-kadang</span>
+                        <span class="scale-label"><span class="num num-4">4</span> Sering</span>
+                        <span class="scale-label"><span class="num num-5">5</span> Sangat Sering</span>
+                    </div>
+                </div>
+                <table class="modern-table" id="table2">
+                    <thead>
+                        <tr>
+                            <th>Pernyataan</th>
+                            <th><span class="th-num">1</span></th>
+                            <th><span class="th-num">2</span></th>
+                            <th><span class="th-num">3</span></th>
+                            <th><span class="th-num">4</span></th>
+                            <th><span class="th-num">5</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Saya mendengarkan sampai lawan bicara selesai berbicara.</td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya mengungkapkan pendapat dengan sopan.</td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya tidak menyela pembicaraan orang lain.</td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya berusaha memahami perasaan orang lain.</td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya menyelesaikan konflik melalui diskusi yang baik.</td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="scale-legend">
+                    <span><span class="dot dot-1"></span> 1 = Tidak Pernah</span>
+                    <span><span class="dot dot-2"></span> 2 = Jarang</span>
+                    <span><span class="dot dot-3"></span> 3 = Kadang-kadang</span>
+                    <span><span class="dot dot-4"></span> 4 = Sering</span>
+                    <span><span class="dot dot-5"></span> 5 = Sangat Sering</span>
+                </div>
+            </div>
 
-      // ---------- TAB ----------
-      function switchTab(tabId) {
-        tabBtns.forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.tab === tabId);
-        });
-        tabEdu.classList.toggle('active', tabId === 'edu');
-        tabKonseling.classList.toggle('active', tabId === 'konseling');
-      }
+            <!-- Tes 3: Self-Compassion -->
+            <div class="test-card" id="test3">
+                <div class="test-title">🌿 Tes 3: Self-Compassion</div>
+                <div class="test-desc">
+                    <i class="fas fa-info-circle"></i> Pilih skala yang paling sesuai dengan diri Anda:
+                    <div style="margin-top: 6px; display: flex; flex-wrap: wrap; gap: 2px;">
+                        <span class="scale-label"><span class="num num-1">1</span> Tidak Pernah</span>
+                        <span class="scale-label"><span class="num num-2">2</span> Jarang</span>
+                        <span class="scale-label"><span class="num num-3">3</span> Kadang-kadang</span>
+                        <span class="scale-label"><span class="num num-4">4</span> Sering</span>
+                        <span class="scale-label"><span class="num num-5">5</span> Sangat Sering</span>
+                    </div>
+                </div>
+                <table class="modern-table" id="table3">
+                    <thead>
+                        <tr>
+                            <th>Pernyataan</th>
+                            <th><span class="th-num">1</span></th>
+                            <th><span class="th-num">2</span></th>
+                            <th><span class="th-num">3</span></th>
+                            <th><span class="th-num">4</span></th>
+                            <th><span class="th-num">5</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Saya merasa tidak berdaya saat melakukan kesalahan.</td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya tidak terlalu keras menghakimi diri sendiri.</td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya menyadari bahwa setiap orang bisa melakukan kesalahan.</td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya tetap menghargai diri saat mengalami kegagalan.</td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya memberi waktu bagi diri untuk beristirahat saat lelah.</td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="scale-legend">
+                    <span><span class="dot dot-1"></span> 1 = Tidak Pernah</span>
+                    <span><span class="dot dot-2"></span> 2 = Jarang</span>
+                    <span><span class="dot dot-3"></span> 3 = Kadang-kadang</span>
+                    <span><span class="dot dot-4"></span> 4 = Sering</span>
+                    <span><span class="dot dot-5"></span> 5 = Sangat Sering</span>
+                </div>
+            </div>
 
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          switchTab(this.dataset.tab);
-        });
-      });
+            <!-- Tes 4: Mindfulness -->
+            <div class="test-card" id="test4">
+                <div class="test-title">🧘 Tes 4: Mindfulness</div>
+                <div class="test-desc">
+                    <i class="fas fa-info-circle"></i> Pilih skala yang paling sesuai dengan kebiasaan Anda:
+                    <div style="margin-top: 6px; display: flex; flex-wrap: wrap; gap: 2px;">
+                        <span class="scale-label"><span class="num num-1">1</span> Tidak Pernah</span>
+                        <span class="scale-label"><span class="num num-2">2</span> Jarang</span>
+                        <span class="scale-label"><span class="num num-3">3</span> Kadang-kadang</span>
+                        <span class="scale-label"><span class="num num-4">4</span> Sering</span>
+                        <span class="scale-label"><span class="num num-5">5</span> Sangat Sering</span>
+                    </div>
+                </div>
+                <table class="modern-table" id="table4">
+                    <thead>
+                        <tr>
+                            <th>Pernyataan</th>
+                            <th><span class="th-num">1</span></th>
+                            <th><span class="th-num">2</span></th>
+                            <th><span class="th-num">3</span></th>
+                            <th><span class="th-num">4</span></th>
+                            <th><span class="th-num">5</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Saya fokus pada aktivitas yang sedang saya lakukan.</td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya menyadari emosi yang sedang saya rasakan.</td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya memperhatikan napas saat merasa tegang.</td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya tidak mudah terbawa pikiran masa lalu atau masa depan.</td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                        <tr>
+                            <td>Saya menjalani aktivitas tanpa terburu-buru.</td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="5"><span class="radio-custom"></span></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="scale-legend">
+                    <span><span class="dot dot-1"></span> 1 = Tidak Pernah</span>
+                    <span><span class="dot dot-2"></span> 2 = Jarang</span>
+                    <span><span class="dot dot-3"></span> 3 = Kadang-kadang</span>
+                    <span><span class="dot dot-4"></span> 4 = Sering</span>
+                    <span><span class="dot dot-5"></span> 5 = Sangat Sering</span>
+                </div>
+            </div>
 
-      // ---------- INIT ----------
-      loadFromStorage();
-      renderEdu();
+            <!-- Tombol aksi tes -->
+            <div class="action-row">
+                <button class="btn-primary" id="kirimHasilTesBtn"><i class="fas fa-paper-plane"></i> Kirim Hasil
+                    Tes</button>
+                <button class="btn-outline" id="resetTesBtn"><i class="fas fa-undo-alt"></i> Reset Semua</button>
+            </div>
 
-      console.log('✨ Bimbingan Konseling Journey siap!');
-    })();
-  </script>
+            <!-- Hasil Tes -->
+            <div class="result-box" id="resultBox">
+                <div class="result-title"><i class="fas fa-chart-bar"></i> Hasil Tes Psikologi</div>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+
+        <!-- TAB KONSELING -->
+        <div id="tabKonseling" class="tab-content">
+            <div class="test-card">
+                <div class="test-title"><i class="fas fa-comment-dots" style="color:#7a4f9e;"></i> Layanan Konseling
+                </div>
+                <div class="test-desc">
+                    <i class="fas fa-shield-alt"></i> Butuh bantuan lebih lanjut? Hubungi Guru BK kami melalui WhatsApp.
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    <a href="https://wa.me/6281350275634?text=Halo%20kak%2C%20saya%20ingin%20konsultasi%20tentang..."
+                        target="_blank" class="btn-wa" style="display:flex; width:100%;">
+                        <i class="fab fa-whatsapp"></i> Hubungi Konselor via WhatsApp
+                    </a>
+                    <p style="font-size:12px; color:#7c6691; text-align:center;">
+                        <i class="fas fa-shield-alt"></i> Konseling rahasia & aman
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <i class="fas fa-circle" style="font-size: 6px; color: #7a4f9e;"></i>
+            #BKJourney • belajar & tumbuh bersama
+            <i class="fas fa-circle" style="font-size: 6px; color: #7a4f9e;"></i>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <!-- MODAL EDUKASI -->
+    <div class="modal-overlay" id="eduModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <h2 id="modalTitle"><i class="fas fa-book-open"></i> Judul</h2>
+            <div id="modalBody">
+                <p>Konten edukasi akan muncul di sini.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // ============================================================
+            //  KONFIGURASI EMAILJS
+            // ============================================================
+            const EMAILJS_CONFIG = {
+                serviceId: "service_n2k5082",
+                templateId: "template_qhr84fq",
+                publicKey: "2Dvuu0jkZKtdG9Bhn",
+                toEmail: "saidsudirman17@gmail.com" // Email tujuan
+            };
+
+            // ============================================================
+            //  DATA EDUKASI
+            // ============================================================
+            const eduData = [{
+                id: 1,
+                icon: '🧠',
+                title: 'Mengenal Stres & Kecemasan',
+                summary: 'Stres adalah respons tubuh terhadap tekanan. Pelajari cara mengenali dan mengelolanya.',
+                detail: 'Stres dan kecemasan adalah bagian dari kehidupan, namun jika berlebihan bisa mengganggu. Kenali tanda-tandanya: sulit tidur, jantung berdebar, atau pikiran yang berputar. Teknik sederhana: tarik napas dalam 4 detik, tahan 4 detik, hembuskan 4 detik. Lakukan 5 menit setiap pagi. Jika perlu, bicarakan dengan konselor.'
+            }, {
+                id: 2,
+                icon: '💬',
+                title: 'Komunikasi Efektif dengan Teman & Keluarga',
+                summary: 'Belajar mendengarkan dan menyampaikan perasaan dengan jelas adalah kunci hubungan sehat.',
+                detail: 'Komunikasi yang baik dimulai dari mendengarkan tanpa menghakimi. Gunakan pernyataan "saya" untuk mengungkapkan perasaan, misalnya "Saya merasa sedih ketika..." Hindari menyalahkan dan berikan ruang bagi orang lain untuk berbicara. Latih empati setiap hari.'
+            }, {
+                id: 3,
+                icon: '🌿',
+                title: 'Self-Compassion: Bersikap Baik pada Diri',
+                summary: 'Perlakukan dirimu seperti kamu memperlakukan teman baik. Ini adalah pondasi kesehatan mental.',
+                detail: 'Self-compassion berarti menerima diri sendiri dengan segala kekurangan. Ketika gagal, jangan menghakimi diri secara berlebihan. Ucapkan kalimat penyemangat, "Saya melakukan yang terbaik". Penelitian menunjukkan bahwa self-compassion mengurangi stres dan meningkatkan resiliensi.'
+            }, {
+                id: 4,
+                icon: '🧘',
+                title: 'Mindfulness untuk Pemula',
+                summary: 'Mindfulness membantu kita hadir di saat ini. Praktik sederhana untuk menenangkan pikiran.',
+                detail: 'Mindfulness adalah kesadaran penuh pada momen sekarang. Mulailah dengan pernapasan: tarik napas dalam 4 detik, tahan 4 detik, hembuskan 4 detik. Lakukan 5 menit setiap hari. Sadari sensasi tubuh dan biarkan pikiran berlalu tanpa menghakimi. Ini menurunkan kecemasan.'
+            }, {
+                id: 5,
+                icon: '🛡️',
+                title: 'Membangun Batasan Sehat',
+                summary: 'Batasan adalah cara melindungi energi dan kesejahteraan emosional. Belajar mengatakan "tidak".',
+                detail: 'Batasan sehat membantu menjaga hubungan yang seimbang. Kenali apa yang membuatmu tidak nyaman dan sampaikan dengan tegas namun sopan. Contoh: "Saya tidak bisa melakukan itu sekarang". Menjaga batasan bukan berarti egois, tetapi bentuk perawatan diri.'
+            }];
+
+            // ============================================================
+            //  DOM REFS
+            // ============================================================
+            const eduGrid = document.getElementById('eduGrid');
+            const modalOverlay = document.getElementById('eduModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const modalClose = document.getElementById('modalClose');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabEdu = document.getElementById('tabEdu');
+            const tabTes = document.getElementById('tabTes');
+            const tabKonseling = document.getElementById('tabKonseling');
+
+            const tesNama = document.getElementById('tesNama');
+            const tesKelas = document.getElementById('tesKelas');
+            const tesAbsen = document.getElementById('tesAbsen');
+            const kirimHasilBtn = document.getElementById('kirimHasilTesBtn');
+            const resetTesBtn = document.getElementById('resetTesBtn');
+            const resultBox = document.getElementById('resultBox');
+            const resultContent = document.getElementById('resultContent');
+            const toast = document.getElementById('toast');
+
+            // ============================================================
+            //  TOAST
+            // ============================================================
+            let toastTimeout = null;
+
+            function showToast(message, type = 'info', duration = 4000) {
+                if (toastTimeout) {
+                    clearTimeout(toastTimeout);
+                    toast.classList.remove('show');
+                }
+                toast.textContent = message;
+                toast.className = 'toast ' + type;
+                void toast.offsetWidth;
+                toast.classList.add('show');
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                    toastTimeout = null;
+                }, duration);
+            }
+
+            // ============================================================
+            //  FUNGSI AMBIL JAWABAN TES
+            // ============================================================
+            function getTestAnswers(tableId, prefix) {
+                const answers = [];
+                const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+                rows.forEach((row, index) => {
+                    const radios = row.querySelectorAll(`input[name^="${prefix}"]`);
+                    let selected = null;
+                    radios.forEach(r => { if (r.checked) selected = r.value; });
+                    const pernyataan = row.querySelector('td:first-child')?.textContent?.trim() || `Pernyataan ${index + 1}`;
+                    answers.push({
+                        nomor: index + 1,
+                        pernyataan: pernyataan,
+                        jawaban: selected ? parseInt(selected) : null                    });
+                });
+                return answers;
+            }
+
+            function getAllTestResults() {
+                const tests = [{
+                    id: 'test1',
+                    table: 'table1',
+                    prefix: 's',
+                    name: 'Stres & Kecemasan',
+                    icon: '🧠'
+                }, {
+                    id: 'test2',
+                    table: 'table2',
+                    prefix: 'k',
+                    name: 'Komunikasi Efektif',
+                    icon: '💬'
+                }, {
+                    id: 'test3',
+                    table: 'table3',
+                    prefix: 'c',
+                    name: 'Self-Compassion',
+                    icon: '🌿'
+                }, {
+                    id: 'test4',
+                    table: 'table4',
+                    prefix: 'm',
+                    name: 'Mindfulness',
+                    icon: '🧘'
+                }];
+
+                const results = {};
+                let allFilled = true;
+                let totalQuestions = 0;
+                let answeredQuestions = 0;
+
+                tests.forEach(test => {
+                    const answers = getTestAnswers(test.table, test.prefix);
+                    results[test.id] = {
+                        name: test.name,
+                        icon: test.icon,
+                        answers: answers
+                    };
+                    answers.forEach(a => {
+                        totalQuestions++;
+                        if (a.jawaban !== null) answeredQuestions++;
+                        if (a.jawaban === null) allFilled = false;
+                    });
+                });
+
+                return { results, allFilled, totalQuestions, answeredQuestions };
+            }
+
+            // ============================================================
+            //  RESET TES
+            // ============================================================
+            function resetAllTests() {
+                document.querySelectorAll('.modern-table input[type="radio"]').forEach(r => r.checked = false);
+                resultBox.classList.remove('show');
+                showToast('Semua tes telah direset', 'info', 2000);
+            }
+
+            resetTesBtn.addEventListener('click', function() {
+                if (confirm('Reset semua jawaban tes?')) {
+                    resetAllTests();
+                }
+            });
+
+            // ============================================================
+            //  KIRIM HASIL TES VIA EMAILJS
+            // ============================================================
+            async function kirimHasilTes() {
+                // Validasi identitas
+                if (!tesNama.value.trim()) {
+                    showToast('Silakan isi Nama Lengkap', 'error');
+                    tesNama.focus();
+                    return;
+                }
+                if (!tesKelas.value.trim()) {
+                    showToast('Silakan isi Kelas', 'error');
+                    tesKelas.focus();
+                    return;
+                }
+                if (!tesAbsen.value.trim()) {
+                    showToast('Silakan isi Nomor Absen', 'error');
+                    tesAbsen.focus();
+                    return;
+                }
+
+                // Ambil hasil tes
+                const { results, allFilled, totalQuestions, answeredQuestions } = getAllTestResults();
+
+                if (!allFilled) {
+                    showToast(`⚠️ Masih ada ${totalQuestions - answeredQuestions} pertanyaan yang belum dijawab!`, 'error',
+                        4000);
+                    return;
+                }
+
+                // Cek konfigurasi EmailJS
+                if (EMAILJS_CONFIG.serviceId === "YOUR_SERVICE_ID" ||
+                    EMAILJS_CONFIG.templateId === "YOUR_TEMPLATE_ID" ||
+                    EMAILJS_CONFIG.publicKey === "YOUR_PUBLIC_KEY") {
+                    showToast('⚠️ EmailJS belum dikonfigurasi. Hubungi admin.', 'error', 5000);
+                    tampilkanHasilDiLayar(results);
+                    return;
+                }
+
+                // Siapkan data untuk email
+                const nama = tesNama.value.trim();
+                const kelas = tesKelas.value.trim();
+                const absen = tesAbsen.value.trim();
+
+                // Buat teks hasil tes untuk email
+                let emailBody = `📋 HASIL TES PSIKOLOGI\n`;
+                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                emailBody += `Nama: ${nama}\n`;
+                emailBody += `Kelas: ${kelas}\n`;
+                emailBody += `Nomor Absen: ${absen}\n`;
+                emailBody += `Tanggal: ${new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}\n`;
+                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+                const testNames = {
+                    test1: 'Tes 1: Stres & Kecemasan',
+                    test2: 'Tes 2: Komunikasi Efektif',
+                    test3: 'Tes 3: Self-Compassion',
+                    test4: 'Tes 4: Mindfulness'
+                };
+
+                Object.keys(results).forEach(key => {
+                    const test = results[key];
+                    emailBody += `📌 ${testNames[key]}\n`;
+                    emailBody += `─────────────────────\n`;
+                    let total = 0;
+                    test.answers.forEach((a, idx) => {
+                        const jawaban = a.jawaban || '-';
+                        emailBody += `${idx + 1}. ${a.pernyataan.substring(0, 40)}${a.pernyataan.length > 40 ? '...' : ''} = ${jawaban}\n`;
+                        if (a.jawaban) total += a.jawaban;
+                    });
+                    const avg = (total / test.answers.length).toFixed(1);
+                    emailBody += `\n📊 Skor Total: ${total} | Rata-rata: ${avg}\n`;
+                    emailBody += `─────────────────────\n\n`;
+                });
+
+                tampilkanHasilDiLayar(results);
+
+                // Kirim email
+                kirimHasilBtn.disabled = true;
+                kirimHasilBtn.innerHTML = '<span class="spinner"></span> Mengirim...';
+
+                try {
+                    const templateParams = {
+                        to_email: EMAILJS_CONFIG.toEmail,
+                        from_name: nama,
+                        kelas: kelas,
+                        absen: absen,
+                        hasil_tes: emailBody,
+                        tanggal: new Date().toLocaleString('id-ID', {
+                            weekday: 'long',
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        })
+                    };
+
+                    await emailjs.send(
+                        EMAILJS_CONFIG.serviceId,
+                        EMAILJS_CONFIG.templateId,
+                        templateParams
+                    );
+
+                    showToast('✅ Hasil tes berhasil dikirim ke Guru BK!', 'success', 4000);
+
+                } catch (error) {
+                    console.error('Gagal mengirim email:', error);
+                    showToast('⚠️ Hasil tes tersimpan di layar, tapi email gagal dikirim.', 'error', 5000);
+                } finally {
+                    kirimHasilBtn.disabled = false;
+                    kirimHasilBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Hasil Tes';
+                }
+            }
+
+            kirimHasilBtn.addEventListener('click', kirimHasilTes);
+
+            // ============================================================
+            //  TAMPILKAN HASIL DI LAYAR
+            // ============================================================
+            function tampilkanHasilDiLayar(results) {
+                const testNames = {
+                    test1: '🧠 Stres & Kecemasan',
+                    test2: '💬 Komunikasi Efektif',
+                    test3: '🌿 Self-Compassion',
+                    test4: '🧘 Mindfulness'
+                };
+
+                let html = '';
+                Object.keys(results).forEach(key => {
+                    const test = results[key];
+                    let total = 0;
+                    let jawabanList = '';
+                    test.answers.forEach((a, idx) => {
+                        const jwb = a.jawaban || '-';
+                        jawabanList +=
+                            `<div class="result-item"><span class="label">${idx + 1}. ${a.pernyataan.substring(0, 35)}${a.pernyataan.length > 35 ? '...' : ''}</span><span class="value">${jwb}</span></div>`;
+                        if (a.jawaban) total += a.jawaban;
+                    });
+                    const avg = test.answers.length > 0 ? (total / test.answers.length).toFixed(1) : 0;
+
+                    html += `
+                        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #e0d4ee;">
+                            <div style="font-weight:700; font-size:15px; color:#2b1a3a; margin-bottom:6px;">${testNames[key]}</div>
+                            ${jawabanList}
+                            <div style="margin-top:6px; font-weight:600; color:#7a4f9e;">Skor Total: ${total} | Rata-rata: ${avg}</div>
+                        </div>
+                    `;
+                });
+
+                const nama = tesNama.value.trim() || 'Belum diisi';
+                const kelas = tesKelas.value.trim() || 'Belum diisi';
+                const absen = tesAbsen.value.trim() || 'Belum diisi';
+
+                resultContent.innerHTML = `
+                    <div style="background:#f4edfa; border-radius:12px; padding:12px; margin-bottom:12px;">
+                        <div class="result-item"><span class="label">👤 Nama</span><span class="value">${nama}</span></div>
+                        <div class="result-item"><span class="label">📚 Kelas</span><span class="value">${kelas}</span></div>
+                        <div class="result-item"><span class="label">🔢 Absen</span><span class="value">${absen}</span></div>
+                    </div>
+                    ${html}
+                    <div style="margin-top:12px; padding:10px; background:#e8f5e9; border-radius:12px; font-size:13px; color:#2e7d32; text-align:center;">
+                        <i class="fas fa-check-circle"></i> Hasil tes telah dikirim ke Guru BK via email
+                    </div>
+                `;
+                resultBox.classList.add('show');
+            }
+
+            // ============================================================
+            //  EDUKASI RENDER
+            // ============================================================
+            function renderEdu() {
+                if (!eduGrid) return;
+                let html = '';
+                eduData.forEach(item => {
+                    html += `
+                        <div class="edu-card" data-id="${item.id}">
+                            <div class="edu-icon">${item.icon}</div>
+                            <div class="edu-content">
+                                <h4>${item.title}</h4>
+                                <p>${item.summary}</p>
+                            </div>
+                            <span class="edu-badge"><i class="fas fa-chevron-right"></i></span>
+                        </div>
+                    `;
+                });
+                eduGrid.innerHTML = html;
+                document.querySelectorAll('.edu-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const id = parseInt(this.dataset.id);
+                        const data = eduData.find(d => d.id === id);
+                        if (data) openModal(data);
+                    });
+                });
+            }
+
+            // ============================================================
+            //  MODAL
+            // ============================================================
+            function openModal(data) {
+                modalTitle.innerHTML = `<i class="fas fa-book-open"></i> ${data.title}`;
+                modalBody.innerHTML = `
+                    <p>${data.detail}</p>
+                    <div class="tip"><i class="fas fa-heart"></i> ${data.summary}</div>
+                `;
+                modalOverlay.classList.add('open');
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('open');
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+
+            // ============================================================
+            //  TAB
+            // ============================================================
+            function switchTab(tabId) {
+                tabBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.tab === tabId);
+                });
+                tabEdu.classList.toggle('active', tabId === 'edu');
+                tabTes.classList.toggle('active', tabId === 'tes');
+                tabKonseling.classList.toggle('active', tabId === 'konseling');
+            }
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+
+            // ============================================================
+            //  INIT
+            // ============================================================
+            renderEdu();
+
+            console.log('📧 EmailJS Config:', {
+                serviceId: EMAILJS_CONFIG.serviceId,
+                templateId: EMAILJS_CONFIG.templateId,
+                publicKey: EMAILJS_CONFIG.publicKey ? '✅ Terisi' : '❌ Kosong',
+                toEmail: EMAILJS_CONFIG.toEmail
+            });
+
+            if (EMAILJS_CONFIG.serviceId === "YOUR_SERVICE_ID" ||
+                EMAILJS_CONFIG.templateId === "YOUR_TEMPLATE_ID" ||
+                EMAILJS_CONFIG.publicKey === "YOUR_PUBLIC_KEY") {
+                console.warn('⚠️ EmailJS belum dikonfigurasi!');
+                showToast('⚠️ Email belum dikonfigurasi. Hubungi admin.', 'error', 5000);
+            } else {
+                console.log('✅ EmailJS siap digunakan!');
+            }
+
+            console.log('✨ Bimbingan Konseling Journey - Tes Psikologi siap!');
+        })();
+    </script>
 </body>
+
 </html>
