@@ -15,13 +15,14 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">
-        (function () {
+        (function() {
             emailjs.init({
                 publicKey: "2jewapwV_wR7UPumd",
             });
         })();
     </script>
     <style>
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -185,7 +186,6 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -252,19 +252,15 @@
         .num-1 {
             background: #28a745;
         }
-
         .num-2 {
             background: #ffc107;
         }
-
         .num-3 {
             background: #fd7e14;
         }
-
         .num-4 {
             background: #dc3545;
         }
-
         .num-5 {
             background: #6f42c1;
         }
@@ -409,10 +405,6 @@
             transform: scale(1.05);
         }
 
-        .radio-option input[type="radio"]:checked+.radio-custom {
-            transform: scale(1);
-        }
-
         /* ===== LEGEND SKALA ===== */
         .scale-legend {
             display: flex;
@@ -447,19 +439,15 @@
         .dot-1 {
             background: #28a745;
         }
-
         .dot-2 {
             background: #ffc107;
         }
-
         .dot-3 {
             background: #fd7e14;
         }
-
         .dot-4 {
             background: #dc3545;
         }
-
         .dot-5 {
             background: #6f42c1;
         }
@@ -530,7 +518,6 @@
 
         .btn-primary,
         .btn-outline,
-        .btn-success,
         .btn-wa {
             flex: 1;
             padding: 13px 10px;
@@ -639,6 +626,67 @@
         .result-box .result-item .value {
             font-weight: 700;
             color: #2b1a3a;
+        }
+
+        /* ===== INTERPRETASI ===== */
+        .interpretasi-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 12px;
+            border: 1px solid #ede3f7;
+        }
+
+        .interpretasi-box .interp-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: #2b1a3a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .interpretasi-box .interp-item {
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .interpretasi-box .interp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .interp-item.rendah {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+
+        .interp-item.sedang {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+
+        .interp-item.tinggi {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .interp-item.sangat-tinggi {
+            background: #f5c6cb;
+            border-left: 4px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .interp-item .interp-label {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
         }
 
         /* ===== EDUKASI ===== */
@@ -750,7 +798,6 @@
                 opacity: 0;
                 transform: scale(0.92) translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -881,120 +928,87 @@
             align-items: center;
         }
 
-        .ref-link {
-            color: #7a4f9e;
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px dashed #c9a7e8;
-            transition: color 0.2s ease;
-        }
-
-        .ref-link:hover {
-            color: #4a2d62;
-            border-bottom-color: #7a4f9e;
-        }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
             .test-card {
                 padding: 14px 12px;
                 border-radius: 22px;
             }
-
             .test-card .test-title {
                 font-size: 15px;
             }
-
             .test-card .test-desc {
                 font-size: 11px;
                 padding: 8px 12px;
             }
-
             .test-card .test-desc .scale-label {
                 font-size: 11px;
                 margin-right: 6px;
             }
-
             .test-card .test-desc .scale-label .num {
                 width: 18px;
                 height: 18px;
                 line-height: 18px;
                 font-size: 9px;
             }
-
             .modern-table {
                 font-size: 12px;
                 border-spacing: 0 3px;
             }
-
             .modern-table thead th {
                 padding: 8px 4px;
                 font-size: 12px;
             }
-
             .modern-table thead th:first-child {
                 padding-left: 10px;
             }
-
             .modern-table thead th .th-num {
                 width: 22px;
                 height: 22px;
                 line-height: 22px;
                 font-size: 11px;
             }
-
             .modern-table tbody td {
                 padding: 6px 3px;
                 font-size: 12px;
             }
-
             .modern-table tbody td:first-child {
                 padding-left: 10px;
                 font-size: 12px;
             }
-
             .radio-option .radio-custom {
                 width: 26px;
                 height: 26px;
             }
-
             .radio-option .radio-custom::after {
                 width: 10px;
                 height: 10px;
             }
-
             .scale-legend {
                 font-size: 11px;
                 gap: 6px;
             }
-
             .scale-legend span {
                 padding: 3px 8px 3px 4px;
             }
-
             .scale-legend .dot {
                 width: 12px;
                 height: 12px;
             }
-
             .identity-form {
                 padding: 12px 10px;
             }
-
             .identity-form .form-row {
                 flex-direction: column;
                 gap: 8px;
             }
-
             .identity-form .form-group {
                 min-width: auto;
             }
-
             .action-row {
                 flex-direction: column;
                 gap: 8px;
             }
-
             .btn-primary,
             .btn-outline,
             .btn-wa {
@@ -1003,58 +1017,42 @@
                 font-size: 13px;
                 min-width: auto;
             }
+            .interpretasi-box .interp-item {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
         }
 
         @media (max-width: 400px) {
             .modern-table {
                 font-size: 10px;
             }
-
             .modern-table thead th {
                 padding: 6px 2px;
                 font-size: 10px;
             }
-
             .modern-table thead th .th-num {
                 width: 18px;
                 height: 18px;
                 line-height: 18px;
                 font-size: 9px;
             }
-
             .modern-table tbody td {
                 padding: 4px 2px;
                 font-size: 10px;
             }
-
             .modern-table tbody td:first-child {
                 padding-left: 6px;
                 font-size: 10px;
             }
-
             .radio-option .radio-custom {
                 width: 22px;
                 height: 22px;
                 border-width: 2px;
             }
-
             .radio-option .radio-custom::after {
                 width: 8px;
                 height: 8px;
-            }
-
-            .scale-legend {
-                font-size: 9px;
-                gap: 4px;
-            }
-
-            .scale-legend span {
-                padding: 2px 6px 2px 3px;
-            }
-
-            .scale-legend .dot {
-                width: 10px;
-                height: 10px;
             }
         }
     </style>
@@ -1062,7 +1060,7 @@
 
 <body>
     <div class="app-container">
-        <!-- header -->
+        <!-- HEADER -->
         <div class="header">
             <div class="header-icon"><i class="fas fa-seedling"></i></div>
             <h1>
@@ -1073,7 +1071,7 @@
             <div class="sub"><i class="fas fa-calendar-day"></i> hari ini</div>
         </div>
 
-        <!-- ilustrasi -->
+        <!-- ILUSTRASI -->
         <div class="journey-illustration">
             <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="30" cy="30" r="18" fill="#c9a7e8" opacity="0.3" />
@@ -1089,7 +1087,7 @@
             </svg>
         </div>
 
-        <!-- tab navigasi -->
+        <!-- TAB NAVIGASI -->
         <div class="tab-nav">
             <button class="tab-btn active" data-tab="edu"><i class="fas fa-book-open"></i> Edukasi</button>
             <button class="tab-btn" data-tab="tes"><i class="fas fa-clipboard-list"></i> Tes</button>
@@ -1127,7 +1125,7 @@
                 </div>
             </div>
 
-            <!-- Tes 1: Stres & Kecemasan -->
+            <!-- TES 1: Stres & Kecemasan -->
             <div class="test-card" id="test1">
                 <div class="test-title">🧠 Tes 1: Mengenal Stres & Kecemasan</div>
                 <div class="test-desc">
@@ -1154,68 +1152,43 @@
                     <tbody>
                         <tr>
                             <td>Saya merasa sulit untuk rileks.</td>
-                            <td><label class="radio-option"><input type="radio" name="s1" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s1" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s1" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s1" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s1" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s1" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya sering merasa khawatir berlebihan.</td>
-                            <td><label class="radio-option"><input type="radio" name="s2" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s2" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s2" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s2" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s2" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s2" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya sulit tidur karena banyak pikiran.</td>
-                            <td><label class="radio-option"><input type="radio" name="s3" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s3" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s3" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s3" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s3" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s3" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya mudah merasa tersinggung.</td>
-                            <td><label class="radio-option"><input type="radio" name="s4" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s4" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s4" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s4" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s4" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s4" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya merasa kewalahan dengan tugas sehari-hari.</td>
-                            <td><label class="radio-option"><input type="radio" name="s5" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s5" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s5" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s5" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="s5" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="s5" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1228,7 +1201,7 @@
                 </div>
             </div>
 
-            <!-- Tes 2: Komunikasi Efektif -->
+            <!-- TES 2: Komunikasi Efektif -->
             <div class="test-card" id="test2">
                 <div class="test-title">💬 Tes 2: Komunikasi Efektif</div>
                 <div class="test-desc">
@@ -1255,68 +1228,43 @@
                     <tbody>
                         <tr>
                             <td>Saya mendengarkan sampai lawan bicara selesai berbicara.</td>
-                            <td><label class="radio-option"><input type="radio" name="k1" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k1" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k1" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k1" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k1" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k1" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya mengungkapkan pendapat dengan sopan.</td>
-                            <td><label class="radio-option"><input type="radio" name="k2" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k2" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k2" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k2" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k2" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k2" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya tidak menyela pembicaraan orang lain.</td>
-                            <td><label class="radio-option"><input type="radio" name="k3" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k3" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k3" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k3" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k3" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k3" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya berusaha memahami perasaan orang lain.</td>
-                            <td><label class="radio-option"><input type="radio" name="k4" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k4" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k4" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k4" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k4" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k4" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya menyelesaikan konflik melalui diskusi yang baik.</td>
-                            <td><label class="radio-option"><input type="radio" name="k5" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k5" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k5" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k5" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="k5" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="k5" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1329,7 +1277,7 @@
                 </div>
             </div>
 
-            <!-- Tes 3: Self-Compassion -->
+            <!-- TES 3: Self-Compassion -->
             <div class="test-card" id="test3">
                 <div class="test-title">🌿 Tes 3: Self-Compassion</div>
                 <div class="test-desc">
@@ -1356,68 +1304,43 @@
                     <tbody>
                         <tr>
                             <td>Saya merasa tidak berdaya saat melakukan kesalahan.</td>
-                            <td><label class="radio-option"><input type="radio" name="c1" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c1" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c1" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c1" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c1" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c1" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya tidak terlalu keras menghakimi diri sendiri.</td>
-                            <td><label class="radio-option"><input type="radio" name="c2" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c2" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c2" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c2" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c2" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c2" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya menyadari bahwa setiap orang bisa melakukan kesalahan.</td>
-                            <td><label class="radio-option"><input type="radio" name="c3" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c3" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c3" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c3" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c3" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c3" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya tetap menghargai diri saat mengalami kegagalan.</td>
-                            <td><label class="radio-option"><input type="radio" name="c4" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c4" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c4" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c4" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c4" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c4" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya memberi waktu bagi diri untuk beristirahat saat lelah.</td>
-                            <td><label class="radio-option"><input type="radio" name="c5" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c5" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c5" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c5" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="c5" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="c5" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1430,7 +1353,7 @@
                 </div>
             </div>
 
-            <!-- Tes 4: Mindfulness -->
+            <!-- TES 4: Mindfulness -->
             <div class="test-card" id="test4">
                 <div class="test-title">🧘 Tes 4: Mindfulness</div>
                 <div class="test-desc">
@@ -1457,68 +1380,43 @@
                     <tbody>
                         <tr>
                             <td>Saya fokus pada aktivitas yang sedang saya lakukan.</td>
-                            <td><label class="radio-option"><input type="radio" name="m1" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m1" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m1" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m1" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m1" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m1" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya menyadari emosi yang sedang saya rasakan.</td>
-                            <td><label class="radio-option"><input type="radio" name="m2" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m2" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m2" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m2" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m2" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m2" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya memperhatikan napas saat merasa tegang.</td>
-                            <td><label class="radio-option"><input type="radio" name="m3" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m3" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m3" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m3" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m3" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m3" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya tidak mudah terbawa pikiran masa lalu atau masa depan.</td>
-                            <td><label class="radio-option"><input type="radio" name="m4" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m4" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m4" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m4" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m4" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m4" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                         <tr>
                             <td>Saya menjalani aktivitas tanpa terburu-buru.</td>
-                            <td><label class="radio-option"><input type="radio" name="m5" value="1"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m5" value="2"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m5" value="3"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m5" value="4"><span
-                                        class="radio-custom"></span></label></td>
-                            <td><label class="radio-option"><input type="radio" name="m5" value="5"><span
-                                        class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="1"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="2"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="3"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="4"><span class="radio-custom"></span></label></td>
+                            <td><label class="radio-option"><input type="radio" name="m5" value="5"><span class="radio-custom"></span></label></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1531,10 +1429,9 @@
                 </div>
             </div>
 
-            <!-- Tombol aksi tes -->
+            <!-- Tombol aksi -->
             <div class="action-row">
-                <button class="btn-primary" id="kirimHasilTesBtn"><i class="fas fa-paper-plane"></i> Kirim Hasil
-                    Tes</button>
+                <button class="btn-primary" id="kirimHasilTesBtn"><i class="fas fa-paper-plane"></i> Kirim Hasil Tes</button>
                 <button class="btn-outline" id="resetTesBtn"><i class="fas fa-undo-alt"></i> Reset Semua</button>
             </div>
 
@@ -1548,8 +1445,7 @@
         <!-- TAB KONSELING -->
         <div id="tabKonseling" class="tab-content">
             <div class="test-card">
-                <div class="test-title"><i class="fas fa-comment-dots" style="color:#7a4f9e;"></i> Layanan Konseling
-                </div>
+                <div class="test-title"><i class="fas fa-comment-dots" style="color:#7a4f9e;"></i> Layanan Konseling</div>
                 <div class="test-desc">
                     <i class="fas fa-shield-alt"></i> Butuh bantuan lebih lanjut? Hubungi Guru BK kami melalui WhatsApp.
                 </div>
@@ -1587,7 +1483,7 @@
     </div>
 
     <script>
-        (function () {
+        (function() {
             "use strict";
 
             // ============================================================
@@ -1597,7 +1493,7 @@
                 serviceId: "service_r39elfb",
                 templateId: "template_odhjup7",
                 publicKey: "2jewapwV_wR7UPumd",
-                toEmail: "jiann01097@gmail.com" // Email tujuan
+                toEmail: "jiann01097@gmail.com"
             };
 
             // ============================================================
@@ -1634,6 +1530,53 @@
                 summary: 'Batasan adalah cara melindungi energi dan kesejahteraan emosional. Belajar mengatakan "tidak".',
                 detail: 'Batasan sehat membantu menjaga hubungan yang seimbang. Kenali apa yang membuatmu tidak nyaman dan sampaikan dengan tegas namun sopan. Contoh: "Saya tidak bisa melakukan itu sekarang". Menjaga batasan bukan berarti egois, tetapi bentuk perawatan diri.'
             }];
+
+            // ============================================================
+            //  FUNGSI INTERPRETASI
+            // ============================================================
+            function getInterpretasi(namaTes, skor) {
+                const data = {
+                    'Stres & Kecemasan': {
+                        rendah: { label: '✅ Rendah (1,00–2,33)', kelas: 'rendah',
+                            teks: 'Tingkat stres dan kecemasan rendah. Pertahankan pola hidup sehat dan strategi coping yang sudah dilakukan.' },
+                        sedang: { label: '⚠️ Sedang (2,34–3,66)', kelas: 'sedang',
+                            teks: 'Mulai muncul tanda-tanda stres atau kecemasan. Disarankan mempelajari materi, melakukan relaksasi, mindfulness, dan menjaga kesehatan aktivitas.' },
+                        tinggi: { label: '🔴 Tinggi (3,67–5,00)', kelas: 'tinggi',
+                            teks: 'Tingkat stres atau kecemasan tinggi. Disarankan menerapkan teknik pengelolaan stres secara rutin dan mempertimbangkan berkonsultasi jika keluhan menetap.' }
+                    },
+                    'Komunikasi Efektif': {
+                        rendah: { label: '📖 Rendah (1,00–2,33)', kelas: 'rendah',
+                            teks: 'Kemampuan komunikasi efektif masih perlu ditingkatkan. Pelajari teknik mendengarkan aktif, menyampaikan pendapat dengan sopan, dan mengelola konflik.' },
+                        sedang: { label: '📝 Sedang (2,34–3,66)', kelas: 'sedang',
+                            teks: 'Kemampuan komunikasi sudah cukup baik, namun masih ada aspek yang dapat ditingkatkan.' },
+                        tinggi: { label: '🌟 Tinggi (3,67–5,00)', kelas: 'tinggi',
+                            teks: 'Kemampuan komunikasi efektif sudah baik. Pertahankan dan terus latih dalam berbagai situasi.' }
+                    },
+                    'Self-Compassion': {
+                        rendah: { label: '💔 Rendah (1,00–2,33)', kelas: 'rendah',
+                            teks: 'Anda cenderung kurang menerima diri sendiri dan lebih mudah menghakimi diri. Cobalah belajar menerima kesalahan sebagai bagian dari proses belajar.' },
+                        sedang: { label: '💛 Sedang (2,34–3,66)', kelas: 'sedang',
+                            teks: 'Anda sudah cukup mampu bersikap baik kepada diri sendiri, tetapi masih dapat meningkatkan penerimaan diri.' },
+                        tinggi: { label: '💚 Tinggi (3,67–5,00)', kelas: 'tinggi',
+                            teks: 'Anda memiliki self-compassion yang baik. Pertahankan kebiasaan menghargai dan merawat diri.' }
+                    },
+                    'Mindfulness': {
+                        rendah: { label: '🌀 Rendah (1,00–2,33)', kelas: 'rendah',
+                            teks: 'Anda masih sering terdistraksi atau sulit fokus pada saat ini. Latihan mindfulness secara rutin dapat membantu.' },
+                        sedang: { label: '🌊 Sedang (2,34–3,66)', kelas: 'sedang',
+                            teks: 'Kemampuan mindfulness sudah cukup baik, namun masih perlu dilatih agar lebih konsisten.' },
+                        tinggi: { label: '🧘 Tinggi (3,67–5,00)', kelas: 'tinggi',
+                            teks: 'Anda mampu hadir pada momen saat ini dengan baik. Pertahankan latihan mindfulness.' }
+                    }
+                };
+
+                const test = data[namaTes];
+                if (!test) return null;
+
+                if (skor <= 2.33) return test.rendah;
+                if (skor <= 3.66) return test.sedang;
+                return test.tinggi;
+            }
 
             // ============================================================
             //  DOM REFS
@@ -1755,17 +1698,16 @@
                 showToast('Semua tes telah direset', 'info', 2000);
             }
 
-            resetTesBtn.addEventListener('click', function () {
+            resetTesBtn.addEventListener('click', function() {
                 if (confirm('Reset semua jawaban tes?')) {
                     resetAllTests();
                 }
             });
 
             // ============================================================
-            //  KIRIM HASIL TES VIA EMAILJS - VERSI SEDERHANA
+            //  KIRIM HASIL TES
             // ============================================================
             async function kirimHasilTes() {
-                // Validasi identitas
                 if (!tesNama.value.trim()) {
                     showToast('Silakan isi Nama Lengkap', 'error');
                     tesNama.focus();
@@ -1782,15 +1724,14 @@
                     return;
                 }
 
-                // Ambil hasil tes
                 const { results, allFilled, totalQuestions, answeredQuestions } = getAllTestResults();
 
                 if (!allFilled) {
-                    showToast(`⚠️ Masih ada ${totalQuestions - answeredQuestions} pertanyaan yang belum dijawab!`, 'error', 4000);
+                    showToast(`⚠️ Masih ada ${totalQuestions - answeredQuestions} pertanyaan yang belum dijawab!`, 'error',
+                        4000);
                     return;
                 }
 
-                // Siapkan data
                 const nama = tesNama.value.trim();
                 const kelas = tesKelas.value.trim();
                 const absen = tesAbsen.value.trim();
@@ -1803,8 +1744,47 @@
                     minute: '2-digit'
                 });
 
-                // Buat hasil tes
+                // Tampilkan hasil di layar dengan interpretasi
+                tampilkanHasilDiLayar(results);
+
+                // Kirim email
+                kirimHasilBtn.disabled = true;
+                kirimHasilBtn.innerHTML = '<span class="spinner"></span> Mengirim...';
+
+                try {
+                    const response = await emailjs.send(
+                        EMAILJS_CONFIG.serviceId,
+                        EMAILJS_CONFIG.templateId, {
+                            from_name: nama,
+                            kelas: kelas,
+                            absen: absen,
+                            tanggal: tanggal,
+                            hasil_tes: formatHasilTesUntukEmail(results, nama, kelas, absen, tanggal)
+                        }
+                    );
+                    console.log('✅ Berhasil:', response);
+                    showToast('✅ Hasil tes berhasil dikirim ke Guru BK!', 'success', 4000);
+                } catch (error) {
+                    console.error('❌ Error:', error);
+                    showToast('⚠️ Gagal kirim email. Coba lagi nanti.', 'error', 5000);
+                } finally {
+                    kirimHasilBtn.disabled = false;
+                    kirimHasilBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Hasil Tes';
+                }
+            }
+
+            kirimHasilBtn.addEventListener('click', kirimHasilTes);
+
+            // ============================================================
+            //  FORMAT HASIL TES UNTUK EMAIL
+            // ============================================================
+            function formatHasilTesUntukEmail(results, nama, kelas, absen, tanggal) {
                 let hasil = '📋 HASIL TES PSIKOLOGI\n';
+                hasil += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+                hasil += `👤 Nama: ${nama}\n`;
+                hasil += `📚 Kelas: ${kelas}\n`;
+                hasil += `🔢 Absen: ${absen}\n`;
+                hasil += `📅 Tanggal: ${tanggal}\n`;
                 hasil += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
 
                 const testNames = {
@@ -1816,58 +1796,31 @@
 
                 Object.keys(results).forEach(key => {
                     const test = results[key];
+                    let total = 0;
                     hasil += `📌 ${testNames[key]}\n`;
                     hasil += '─────────────────────\n';
-                    let total = 0;
                     test.answers.forEach((a, idx) => {
                         const jawaban = a.jawaban || '-';
-                        hasil += `${idx + 1}. ${a.pernyataan} = ${jawaban}\n`;
+                        hasil += `${idx+1}. ${a.pernyataan} = ${jawaban}\n`;
                         if (a.jawaban) total += a.jawaban;
                     });
                     const avg = (total / test.answers.length).toFixed(1);
-                    hasil += `\n📊 Total: ${total} | Rata-rata: ${avg}\n\n`;
+                    hasil += `\n📊 Total: ${total} | Rata-rata: ${avg}\n`;
+
+                    // Tambahkan interpretasi
+                    const interp = getInterpretasi(testNames[key].replace('🧠 ', '').replace('💬 ', '').replace('🌿 ', '')
+                        .replace('🧘 ', ''), parseFloat(avg));
+                    if (interp) {
+                        hasil += `📝 ${interp.label}: ${interp.teks}\n`;
+                    }
+                    hasil += '─────────────────────\n\n';
                 });
 
-                // Tampilkan hasil di layar
-                tampilkanHasilDiLayar(results);
-
-                // Siapkan parameter untuk EmailJS - PALING SEDERHANA
-                const templateParams = {
-                    from_name: nama,
-                    kelas: kelas,
-                    absen: absen,
-                    tanggal: tanggal,
-                    hasil_tes: hasil
-                };
-
-                console.log('📤 Mengirim:', templateParams);
-
-                // Kirim email
-                kirimHasilBtn.disabled = true;
-                kirimHasilBtn.innerHTML = '<span class="spinner"></span> Mengirim...';
-
-                try {
-                    const response = await emailjs.send(
-                        EMAILJS_CONFIG.serviceId,
-                        EMAILJS_CONFIG.templateId,
-                        templateParams
-                    );
-                    console.log('✅ Berhasil:', response);
-                    showToast('✅ Hasil tes berhasil dikirim ke Guru BK!', 'success', 4000);
-                } catch (error) {
-                    console.error('❌ Error:', error);
-                    console.error('❌ Pesan error:', error.text || error.message);
-                    showToast('⚠️ Gagal kirim email. Coba lagi nanti.', 'error', 5000);
-                } finally {
-                    kirimHasilBtn.disabled = false;
-                    kirimHasilBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Hasil Tes';
-                }
+                return hasil;
             }
 
-            kirimHasilBtn.addEventListener('click', kirimHasilTes);
-
             // ============================================================
-            //  TAMPILKAN HASIL DI LAYAR
+            //  TAMPILKAN HASIL DI LAYAR DENGAN INTERPRETASI
             // ============================================================
             function tampilkanHasilDiLayar(results) {
                 const testNames = {
@@ -1878,6 +1831,8 @@
                 };
 
                 let html = '';
+                let allResults = [];
+
                 Object.keys(results).forEach(key => {
                     const test = results[key];
                     let total = 0;
@@ -1885,18 +1840,43 @@
                     test.answers.forEach((a, idx) => {
                         const jwb = a.jawaban || '-';
                         jawabanList +=
-                            `<div class="result-item"><span class="label">${idx + 1}. ${a.pernyataan.substring(0, 35)}${a.pernyataan.length > 35 ? '...' : ''}</span><span class="value">${jwb}</span></div>`;
+                            `<div class="result-item"><span class="label">${idx+1}. ${a.pernyataan.substring(0, 40)}${a.pernyataan.length > 40 ? '...' : ''}</span><span class="value">${jwb}</span></div>`;
                         if (a.jawaban) total += a.jawaban;
                     });
-                    const avg = test.answers.length > 0 ? (total / test.answers.length).toFixed(1) : 0;
+                    const avg = test.answers.length > 0 ? (total / test.answers.length) : 0;
+                    const avgFixed = avg.toFixed(1);
+
+                    const namaTes = testNames[key].replace('🧠 ', '').replace('💬 ', '').replace('🌿 ', '').replace('🧘 ',
+                        '');
+                    const interp = getInterpretasi(namaTes, avg);
+
+                    allResults.push({
+                        name: testNames[key],
+                        skor: avgFixed,
+                        total: total,
+                        interpretasi: interp
+                    });
 
                     html += `
-                        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #e0d4ee;">
-                            <div style="font-weight:700; font-size:15px; color:#2b1a3a; margin-bottom:6px;">${testNames[key]}</div>
+                        <div style="margin-top:16px; padding-top:16px; border-top:2px solid #e0d4ee;">
+                            <div style="font-weight:700; font-size:16px; color:#2b1a3a; margin-bottom:6px;">${testNames[key]}</div>
                             ${jawabanList}
-                            <div style="margin-top:6px; font-weight:600; color:#7a4f9e;">Skor Total: ${total} | Rata-rata: ${avg}</div>
+                            <div style="margin-top:8px; font-weight:600; color:#7a4f9e;">Skor Total: ${total} | Rata-rata: ${avgFixed}</div>
                         </div>
                     `;
+                });
+
+                // Tambahkan interpretasi
+                let interpHtml = '';
+                allResults.forEach(item => {
+                    if (item.interpretasi) {
+                        interpHtml += `
+                            <div class="interp-item ${item.interpretasi.kelas}">
+                                <span class="interp-label">${item.name}</span>
+                                ${item.interpretasi.label}: ${item.interpretasi.teks}
+                            </div>
+                        `;
+                    }
                 });
 
                 const nama = tesNama.value.trim() || 'Belum diisi';
@@ -1910,6 +1890,7 @@
                         <div class="result-item"><span class="label">🔢 Absen</span><span class="value">${absen}</span></div>
                     </div>
                     ${html}
+                    ${interpHtml ? `<div class="interpretasi-box"><div class="interp-title"><i class="fas fa-lightbulb" style="color:#f39c12;"></i> Interpretasi Hasil Tes</div>${interpHtml}</div>` : ''}
                     <div style="margin-top:12px; padding:10px; background:#e8f5e9; border-radius:12px; font-size:13px; color:#2e7d32; text-align:center;">
                         <i class="fas fa-check-circle"></i> Hasil tes telah dikirim ke Guru BK via email
                     </div>
@@ -1937,7 +1918,7 @@
                 });
                 eduGrid.innerHTML = html;
                 document.querySelectorAll('.edu-card').forEach(card => {
-                    card.addEventListener('click', function () {
+                    card.addEventListener('click', function() {
                         const id = parseInt(this.dataset.id);
                         const data = eduData.find(d => d.id === id);
                         if (data) openModal(data);
@@ -1962,7 +1943,7 @@
             }
 
             modalClose.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', function (e) {
+            modalOverlay.addEventListener('click', function(e) {
                 if (e.target === this) closeModal();
             });
 
@@ -1979,7 +1960,7 @@
             }
 
             tabBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
+                btn.addEventListener('click', function() {
                     switchTab(this.dataset.tab);
                 });
             });
@@ -1995,16 +1976,7 @@
                 publicKey: EMAILJS_CONFIG.publicKey ? '✅ Terisi' : '❌ Kosong',
                 toEmail: EMAILJS_CONFIG.toEmail
             });
-
-            if (EMAILJS_CONFIG.serviceId === "YOUR_SERVICE_ID" ||
-                EMAILJS_CONFIG.templateId === "YOUR_TEMPLATE_ID" ||
-                EMAILJS_CONFIG.publicKey === "YOUR_PUBLIC_KEY") {
-                console.warn('⚠️ EmailJS belum dikonfigurasi!');
-                showToast('⚠️ Email belum dikonfigurasi. Hubungi admin.', 'error', 5000);
-            } else {
-                console.log('✅ EmailJS siap digunakan!');
-            }
-
+            console.log('✅ EmailJS siap digunakan!');
             console.log('✨ Bimbingan Konseling Journey - Tes Psikologi siap!');
         })();
     </script>
